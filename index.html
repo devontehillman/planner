@@ -148,6 +148,38 @@
       };
       setInterval(update, 1000);
     //add onclick for button once clicked that it will save the text in local storage
+    var arr = []
+    $(".saveBtn").click(function(){
+         // prev for the last
+        //get the textarea index and save it 
+        var userString = ($(this).prev()).val();
+        var count = ($(this).prev()).data('number');
+        console.log(count)
+        console.log(userString)
+        arr[count]= userString;
+        console.log(arr)     
+        
+        var i ; 
+        for (i = 0; i < 24; i++){
+          if (arr[i] == null){
+          arr[i]= ""
+          console.log(arr[i])
+          }
+          console.log(arr)
+        }
+
+
+        localStorage.setItem("userString",JSON.stringify(arr));
+        })  
+        
+        //when page reload set the text area val to the stored item
+        var saved = JSON.parse(localStorage.getItem('userString'))
+        
+        // var i = 0;
+        // for (i = 0; i < 24;i++){
+        //     timeslot[i].innerHTML = saved[i]
+            
+        // }
     //add fuctionality that changes the color based on time and use the css 
     
     //initialize date object
